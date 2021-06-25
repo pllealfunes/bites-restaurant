@@ -127,4 +127,7 @@ li {
 a {
   color: #42b983;
 }
+body {
+  background: url("../assets/images/burger1.jpg") no-repeat center center fixed;
+}
 </style>
