@@ -3,7 +3,7 @@
     <h1>Bites</h1>
   </header>
   <div id="welcomeBox">
-    <div id="welcomeContent">
+    <div>
       <h2>Bite Sized Goodness</h2>
       <button>Order</button>
     </div>
@@ -30,10 +30,13 @@ header {
   opacity: 0.88;
   background-color: #343a40;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   h1 {
     font-size: 70px;
-    letter-spacing: 1rem;
+    font-family: "Arvo", serif;
   }
 }
 
@@ -43,17 +46,15 @@ header {
   color: #fff;
   width: 400px;
   height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: #fff;
-
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   div {
-    border: 1px orange solid;
-
+    padding: 1rem;
     h2 {
       font-size: 40px;
-      margin: 1rem;
     }
 
     button {
