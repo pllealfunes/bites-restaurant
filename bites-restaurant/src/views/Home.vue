@@ -5,7 +5,7 @@
   <div id="welcomeBox">
     <div>
       <h2>Bite Sized Goodness</h2>
-      <button>Order</button>
+      <router-link to="/menu"><button>Order</button></router-link>
     </div>
   </div>
 </template>
@@ -17,53 +17,55 @@ export default {
   components: {},
 };
 </script>
-<style lang="scss">
-body {
-  background: url("../assets/images/burger1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+<style scoped lang="scss">
+$background-grey: #343a40;
+$font-white: #fff;
 
 header {
   opacity: 0.88;
-  background-color: #343a40;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  background-color: black;
+  color: $font-white;
   h1 {
-    font-size: 70px;
+    font-size: 65px;
     font-family: "Arvo", serif;
+    text-align: center;
   }
 }
 
 #welcomeBox {
   opacity: 0.88;
-  background-color: #343a40;
-  color: #fff;
-  width: 400px;
-  height: 200px;
-  color: #fff;
-  margin: 0 auto;
+  background: url("../assets/images/burger1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   div {
+    opacity: 0.88;
+    background-color: $background-grey;
+    color: $font-white;
+    width: 400px;
+    height: 300px;
     padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     h2 {
-      font-size: 40px;
+      font-size: 45px;
     }
 
     button {
       padding: 10px;
       border-radius: 25px;
       border: none;
-      font-size: 20px;
+      font-size: 25px;
       background-color: red;
-      color: #fff;
+      color: $font-white;
       font-weight: bold;
     }
   }
