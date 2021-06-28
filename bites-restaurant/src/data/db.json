@@ -1,0 +1,28 @@
+{
+    "food": [
+        {
+            "id": 1,
+            "title": "Mini Omelete",
+            "ingrediants": "Stuff",
+            "category": "Breakfast"
+        },
+        {
+            "id": 2,
+            "title": "Mini Burger",
+            "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
+            "category": "Dinner"
+        },
+        {
+            "id": 3,
+            "title": "Mini Salad",
+            "ingrediants": "Stuff",
+            "category": "Lunch"
+        },
+        {
+            "id": 4,
+            "title": "Mini Cake",
+            "ingrediants": "Stuff",
+            "category": "Dessert"
+        }
+    ]
+}
