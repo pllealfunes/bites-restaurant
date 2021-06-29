@@ -43,6 +43,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+
   div {
     opacity: 0.88;
     background-color: $background-grey;
