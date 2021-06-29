@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Menu from "../views/Menu.vue";
+import Dish from "../views/Dish.vue";
 import Cart from "../views/Cart.vue";
 
 const routes = [
@@ -18,6 +19,17 @@ const routes = [
     /*component: () =>
       import("../views/Menu.vue"),*/
     component: Menu,
+  },
+  {
+    path: "/dish/:id",
+    name: "Dish",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    /*component: () =>
+      import("../views/Menu.vue"),*/
+    component: Dish,
+    props: true,
   },
   {
     path: "/cart",

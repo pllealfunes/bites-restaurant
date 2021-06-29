@@ -1,9 +1,14 @@
 <template>
   <div class="wrapper">
     <h1>Menu</h1>
-    <ul>
-      <li v-for="food in foods" :key="food">{{ food }}</li>
-    </ul>
+    <router-link
+      v-for="food in foods"
+      v-bind:to="{ name: 'Dish', params: { id: food.id } }"
+      v-bind:key="food.id"
+    >
+      <h3>{{ food.title }}</h3>
+      <div>{{ food.category }}</div>
+    </router-link>
   </div>
 </template>
 
@@ -11,21 +16,14 @@
 export default {
   name: "Menu",
   data() {
-    return { food: null };
+    return { foods: [] };
   },
   props: {},
-  methods: {
-    async readMenu() {
-      const res = await fetch("http://localhost:3000/food");
-      let data = await res.json();
-      return data;
-      //console.log(foods);
-    },
-  },
-  async created() {
-    const data = await this.readMenu();
-    this.food = data;
-    console.log(data);
+  mounted() {
+    fetch("http://localhost:3000/food")
+      .then((res) => res.json())
+      .then((data) => (this.foods = data))
+      .catch((err) => console.log(err.message));
   },
 };
 </script>
