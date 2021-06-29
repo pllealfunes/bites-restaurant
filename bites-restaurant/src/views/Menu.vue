@@ -6,10 +6,20 @@
         v-for="food in foods"
         v-bind:to="{ name: 'Dish', params: { id: food.id } }"
         v-bind:key="food.id"
+        class="foodLink"
       >
         <div id="foodContainer">
-          <h3>{{ food.title }}</h3>
-          <div>{{ food.category }}</div>
+          <div
+            id="header"
+            :style="{
+              'background-image':
+                'url(' + require('../assets/images/' + food.img) + ')',
+            }"
+          ></div>
+          <div id="footer">
+            <h3>{{ food.title }}</h3>
+            <div>{{ food.category }}</div>
+          </div>
         </div>
       </router-link>
     </div>
@@ -20,7 +30,13 @@
 export default {
   name: "Menu",
   data() {
-    return { foods: [] };
+    return {
+      foods: [],
+      styleObject: {
+        backgroundSize: "cover",
+        height: "200px",
+      },
+    };
   },
   props: {},
   mounted() {
@@ -39,10 +55,31 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 5rem;
-  #foodContainer {
-    border: 1px red solid;
-    padding: 5rem;
+  flex-shrink: 0;
+  min-width: 0;
+  padding: 0;
+  .foodLink {
+    text-decoration: none;
+    color: #fff;
+    #foodContainer {
+      width: 300px;
+      background-color: #343a40;
+      font-weight: bold;
+      opacity: 0.88;
+      margin: 1rem;
+      #header {
+        /*background: url("../assets/images/burger2.jpg") no-repeat center center;*/
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 200px;
+      }
+      #footer {
+        height: 70px;
+        font-size: 20px;
+      }
+    }
   }
 }
 </style>

@@ -2,25 +2,29 @@
     "food": [
         {
             "id": 1,
-            "title": "Mini Omelete",
+            "title": "Bites Pancakes",
+            "img": "bites-pancakes.jpg",
             "ingrediants": "Stuff",
             "category": "Breakfast"
         },
         {
             "id": 2,
-            "title": "Mini Burger",
+            "title": "Bites Burger",
+            "img": "bites-burger.jpg",
             "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
             "category": "Dinner"
         },
         {
             "id": 3,
-            "title": "Mini Salad",
+            "title": "Bites Salad",
+            "img": "bites-salad.jpg",
             "ingrediants": "Stuff",
             "category": "Lunch"
         },
         {
             "id": 4,
-            "title": "Mini Cake",
+            "title": "Bites Cake",
+            "img": "bites-cake.jpg",
             "ingrediants": "Stuff",
             "category": "Dessert"
         }

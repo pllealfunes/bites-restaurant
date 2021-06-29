@@ -68,6 +68,7 @@ header {
       background-color: red;
       color: $font-white;
       font-weight: bold;
+      cursor: pointer;
     }
   }
 }
