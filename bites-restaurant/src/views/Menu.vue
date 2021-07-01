@@ -2,26 +2,27 @@
   <div class="wrapper">
     <h1>Menu</h1>
     <div id="wrapper">
-      <router-link
-        v-for="food in foods"
-        v-bind:to="{ name: 'Dish', params: { id: food.id } }"
-        v-bind:key="food.id"
-        class="foodLink"
-      >
-        <div id="foodContainer">
-          <div
-            id="header"
-            :style="{
-              'background-image':
-                'url(' + require('../assets/images/' + food.img) + ')',
-            }"
-          ></div>
-          <div id="footer">
-            <h3>{{ food.title }}</h3>
-            <div>{{ food.category }}</div>
+      <div v-for="food in foods" v-bind:key="food.id">
+        <h2>{{ category }}</h2>
+        <router-link
+          v-bind:to="{ name: 'Dish', params: { id: food.id } }"
+          class="foodLink"
+        >
+          <div id="foodContainer">
+            <div
+              id="header"
+              :style="{
+                'background-image':
+                  'url(' + require('../assets/images/' + food.img) + ')',
+              }"
+            ></div>
+            <div id="footer">
+              <h3>{{ food.title }}</h3>
+              <div>{{ food.category }}</div>
+            </div>
           </div>
-        </div>
-      </router-link>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -31,19 +32,39 @@ export default {
   name: "Menu",
   data() {
     return {
+      categories: [],
       foods: [],
       styleObject: {
         backgroundSize: "cover",
         height: "200px",
       },
+      category: "",
     };
   },
   props: {},
   mounted() {
-    fetch("http://localhost:3000/food")
+    fetch("http://localhost:3000/categories")
       .then((res) => res.json())
-      .then((data) => (this.foods = data))
+      .then((data) => (this.categories = data))
       .catch((err) => console.log(err.message));
+
+    fetch("http://localhost:3000/menu")
+      .then((res) => res.json())
+      .then(
+        (data) =>
+          (this.foods = data.filter((food) =>
+            food.category.match(food.category)
+          ))
+      )
+      .catch((err) => console.log(err.message));
+    //},
+  },
+  computed: {
+    filteredFood() {
+      return this.foods.filter((food) => {
+        return food.category.match(this.category);
+      });
+    },
   },
 };
 </script>

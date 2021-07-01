@@ -1,5 +1,5 @@
 {
-    "food": [
+    "Menu": [
         {
             "id": 1,
             "title": "Bites Pancakes",
@@ -9,24 +9,86 @@
         },
         {
             "id": 2,
-            "title": "Bites Burger",
-            "img": "bites-burger.jpg",
-            "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
-            "category": "Dinner"
+            "title": "Bites Spinach Toast",
+            "img": "bites-spinach-toast.jpg",
+            "ingrediants": "Stuff",
+            "category": "Breakfast"
         },
         {
             "id": 3,
+            "title": "Bites Guac Toast",
+            "img": "bites-guac-toast.jpg",
+            "ingrediants": "Stuff",
+            "category": "Breakfast"
+        },
+        {
+            "id": 4,
             "title": "Bites Salad",
             "img": "bites-salad.jpg",
             "ingrediants": "Stuff",
             "category": "Lunch"
         },
         {
-            "id": 4,
+            "id": 5,
+            "title": "Bites Sandwich",
+            "img": "bites-sandwich.jpg",
+            "ingrediants": "Stuff",
+            "category": "Lunch"
+        },
+        {
+            "id": 6,
+            "title": "Bites Soup",
+            "img": "bites-soup.jpg",
+            "ingrediants": "Stuff",
+            "category": "Lunch"
+        },
+        {
+            "id": 7,
+            "title": "Bites Burger",
+            "img": "bites-burger.jpg",
+            "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
+            "category": "Dinner"
+        },
+        {
+            "id": 8,
+            "title": "Bites Burger",
+            "img": "bites-burger.jpg",
+            "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
+            "category": "Dinner"
+        },
+        {
+            "id": 9,
+            "title": "Bites Burger",
+            "img": "bites-burger.jpg",
+            "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
+            "category": "Dinner"
+        },
+        {
+            "id": 10,
             "title": "Bites Cake",
             "img": "bites-cake.jpg",
             "ingrediants": "Stuff",
             "category": "Dessert"
+        },
+        {
+            "id": 11,
+            "title": "Bites Waffle Ice Cream",
+            "img": "bites-waffles-icecream.jpg",
+            "ingrediants": "Stuff",
+            "category": "Dessert"
+        },
+        {
+            "id": 12,
+            "title": "Bites Fruit Jello",
+            "img": "bites-fruit-jello.jpg",
+            "ingrediants": "Stuff",
+            "category": "Dessert"
         }
+    ],
+    "categories": [
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Dessert"
     ]
 }
