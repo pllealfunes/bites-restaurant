@@ -1,9 +1,19 @@
 <template>
-  <div class="wrapper">
+  <div id="main">
     <h1>Menu</h1>
-    <div id="wrapper">
-      <div v-for="food in foods" v-bind:key="food.id">
-        <h2>{{ category }}</h2>
+    <div id="nav">
+      <button
+        v-for="(category, index) in categories"
+        v-bind:key="index"
+        class="btnCategory"
+        @click="toggleFood(category)"
+        value="`${category}`"
+      >
+        {{ category }}
+      </button>
+    </div>
+    <div id="menuContainer">
+      <div v-for="(food, index) in filteredFood" v-bind:key="index">
         <router-link
           v-bind:to="{ name: 'Dish', params: { id: food.id } }"
           class="foodLink"
@@ -32,38 +42,32 @@ export default {
   name: "Menu",
   data() {
     return {
-      categories: [],
+      categories: ["All", "Breakfast", "Lunch", "Dinner", "Dessert"],
       foods: [],
-      styleObject: {
-        backgroundSize: "cover",
-        height: "200px",
-      },
-      category: "",
+      category: [],
     };
   },
-  props: {},
   mounted() {
-    fetch("http://localhost:3000/categories")
-      .then((res) => res.json())
-      .then((data) => (this.categories = data))
-      .catch((err) => console.log(err.message));
-
     fetch("http://localhost:3000/menu")
       .then((res) => res.json())
-      .then(
-        (data) =>
-          (this.foods = data.filter((food) =>
-            food.category.match(food.category)
-          ))
-      )
+      .then((data) => (this.foods = data))
       .catch((err) => console.log(err.message));
-    //},
   },
   computed: {
     filteredFood() {
+      if (this.category.length === 0) return this.foods;
       return this.foods.filter((food) => {
-        return food.category.match(this.category);
+        return this.category.includes(food.category);
       });
+    },
+  },
+  methods: {
+    toggleFood(category) {
+      if (category == "All") {
+        this.category = [];
+      } else {
+        this.category = category;
+      }
     },
   },
 };
@@ -71,7 +75,23 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-#wrapper {
+h1 {
+  font-size: 50px;
+}
+#nav {
+  .btnCategory {
+    background-color: #343a40;
+    font-weight: bold;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10%;
+    font-size: 20px;
+    margin: 2px;
+    cursor: pointer;
+  }
+}
+#menuContainer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
