@@ -1,5 +1,5 @@
 <template>
-  <div v-if="food" class="wrapper">
+  <div v-if="food" id="wrapper">
     <h1>{{ food.title }}</h1>
     <div
       class="thumb"
@@ -8,8 +8,20 @@
           'url(' + require('../assets/images/' + food.img) + ')',
       }"
     ></div>
-    <p>{{ food.category }}</p>
-    <p>{{ food.ingrediants }}</p>
+    <div id="descriptionContainer">
+      <p id="category">{{ food.category }}</p>
+      <p id="ingrediants">{{ food.ingrediants }}</p>
+      <p id="description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+        earum itaque dolores, voluptas modi, repellat, error libero voluptatem
+        reiciendis sunt perspiciatis corporis veritatis architecto aliquid magni
+        odio vero quas delectus pariatur explicabo est! Dignissimos voluptatem,
+        laudantium incidunt aliquam, repellendus ipsam dolores animi tempora
+        recusandae nesciunt ex nam reiciendis mollitia. Dignissimos.
+      </p>
+      <div id="price">$3.99</div>
+    </div>
+    <button id="addBtn">Add to Order</button>
   </div>
 </template>
 
@@ -52,14 +64,40 @@ export default {
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
-}
-.thumb {
-  width: 400px;
-  height: 400px;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  text-align: center;
+  .thumb {
+    width: 550px;
+    height: 400px;
+    margin-top: 1rem;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  #descriptionContainer {
+    #description {
+      text-align: justify;
+      width: 50rem;
+      height: 10rem;
+      padding: 5px;
+      margin-top: 5px;
+      font-size: 20px;
+    }
+    #price {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+  }
+
+  button {
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+  }
 }
 </style>
