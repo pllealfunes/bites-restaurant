@@ -1,6 +1,11 @@
 <template>
   <div id="main">
-    <h1>Menu</h1>
+    <header>
+      <h1>Menu</h1>
+      <router-link v-bind:to="{ name: 'Checkout' }">
+        <button id="cart"><i d="cart" class="fas fa-shopping-cart"></i></button>
+      </router-link>
+    </header>
     <div id="nav">
       <button
         v-for="(category, index) in categories"
@@ -75,8 +80,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h1 {
-  font-size: 50px;
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: 50px;
+  }
+  #cart {
+    border: none;
+    font-size: 25px;
+    background-color: #fff;
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
 }
 #nav {
   .btnCategory {

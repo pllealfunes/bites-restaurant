@@ -1,6 +1,13 @@
 <template>
   <div v-if="food" id="wrapper">
-    <h1>{{ food.title }}</h1>
+    <header>
+      <h1>{{ food.title }}</h1>
+      <router-link v-bind:to="{ name: 'Checkout' }">
+        <button id="cart">
+          <i class="fas fa-shopping-cart"></i><cart></cart>
+        </button>
+      </router-link>
+    </header>
     <div
       class="thumb"
       :style="{
@@ -9,28 +16,28 @@
       }"
     ></div>
     <div id="descriptionContainer">
-      <p id="category">{{ food.category }}</p>
       <p id="ingrediants">{{ food.ingrediants }}</p>
       <p id="description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-        earum itaque dolores, voluptas modi, repellat, error libero voluptatem
-        reiciendis sunt perspiciatis corporis veritatis architecto aliquid magni
-        odio vero quas delectus pariatur explicabo est! Dignissimos voluptatem,
-        laudantium incidunt aliquam, repellendus ipsam dolores animi tempora
-        recusandae nesciunt ex nam reiciendis mollitia. Dignissimos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sunt
+        quos eum neque quam officiis adipisci error quis magni ad.
       </p>
       <div id="price">$3.99</div>
     </div>
-    <button id="addBtn">Add to Order</button>
+    <button id="addBtn" :click="addCart">Add to Order</button>
   </div>
 </template>
 
 <script>
+import Cart from "@/components/CartCount.vue";
 export default {
   name: "Menu",
+  components: {
+    cart: Cart,
+  },
   data() {
     return {
       food: null,
+      cart: 0,
     };
   },
   props: {
@@ -53,6 +60,11 @@ export default {
       }
     },
   },
+  methods: {
+    addCart() {
+      return this.cart++;
+    },
+  },
 };
 </script>
 
@@ -63,10 +75,25 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  flex-wrap: wrap;
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    h1 {
+      font-size: 40px;
+    }
+    #cart {
+      border: none;
+      font-size: 25px;
+      background-color: #fff;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  }
   .thumb {
     width: 550px;
-    height: 400px;
+    height: 320px;
     margin-top: 1rem;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -77,19 +104,17 @@ export default {
   #descriptionContainer {
     #description {
       text-align: justify;
-      width: 50rem;
-      height: 10rem;
-      padding: 5px;
+      width: 30rem;
       margin-top: 5px;
       font-size: 20px;
     }
     #price {
-      font-size: 25px;
-      margin-bottom: 10px;
+      font-size: 30px;
+      margin-top: 50px;
     }
   }
 
-  button {
+  #addBtn {
     border: none;
     border-radius: 25px;
     font-weight: bold;
@@ -98,6 +123,7 @@ export default {
     background-color: red;
     color: #fff;
     cursor: pointer;
+    margin: 10px;
   }
 }
 </style>
