@@ -1,23 +1,27 @@
 <template>
   <div class="wrapper">
     <router-link id="list-count" v-bind:to="{ name: 'Checkout' }">
-      {{ cart.length }}</router-link
+      {{ cartCount }}</router-link
     >
   </div>
 </template>
 
 <script>
+import { cart } from "@/common/Cart.js";
 export default {
   name: "Cart",
   data() {
     return {
-      cart: 0,
+      cart: [],
     };
   },
   props: {},
+  mounted() {
+    this.$store.commit("cartCount", cart.count());
+  },
   computed: {
     cartCount() {
-      return this.cart++;
+      return this.$store.state.cartCount;
     },
   },
 };

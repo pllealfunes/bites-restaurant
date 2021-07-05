@@ -4,7 +4,7 @@
       <h1>{{ food.title }}</h1>
       <router-link v-bind:to="{ name: 'Checkout' }">
         <button id="cart">
-          <i class="fas fa-shopping-cart"></i><cart></cart>
+          <i class="fas fa-shopping-cart"></i><cart :cart="cart"></cart>
         </button>
       </router-link>
     </header>
@@ -28,11 +28,11 @@
 </template>
 
 <script>
-import Cart from "@/components/CartCount.vue";
+import { cart } from "@/components/CartCount.vue";
 export default {
   name: "Menu",
   components: {
-    cart: Cart,
+    Cart,
   },
   data() {
     return {
@@ -50,6 +50,8 @@ export default {
       .then((res) => res.json())
       .then((data) => (this.food = data))
       .catch((err) => console.log(err.message));
+
+    this.$store.commit("cartCount", cart.count());
   },
   computed: {
     imgSrc() {
@@ -62,7 +64,8 @@ export default {
   },
   methods: {
     addCart() {
-      return this.cart++;
+      cart.add(this.food.id);
+      this.$store.commit("setCartCount", cart.count());
     },
   },
 };
