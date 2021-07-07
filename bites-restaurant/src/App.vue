@@ -2,10 +2,16 @@
   <router-view />
 </template>
 <script>
+//import store from "@/store/index.js";
 export default {
   name: "App",
   data() {
     return {};
+  },
+  computed: {
+    products() {
+      return this.$store.state.food;
+    },
   },
 };
 </script>

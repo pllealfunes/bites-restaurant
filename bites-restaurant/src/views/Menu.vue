@@ -49,20 +49,24 @@ export default {
   data() {
     return {
       categories: ["All", "Breakfast", "Lunch", "Dinner", "Dessert"],
-      foods: [],
+      //foods: [],
       category: [],
     };
   },
   mounted() {
-    fetch("http://localhost:3000/menu")
+    /*fetch("http://localhost:3000/menu")
       .then((res) => res.json())
       .then((data) => (this.foods = data))
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.log(err.message));*/
+    this.$store.dispatch("getMenu");
   },
   computed: {
+    menu() {
+      return this.$store.state.menu;
+    },
     filteredFood() {
-      if (this.category.length === 0) return this.foods;
-      return this.foods.filter((food) => {
+      if (this.category.length === 0) return this.menu;
+      return this.menu.filter((food) => {
         return this.category.includes(food.category);
       });
     },

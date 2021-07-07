@@ -35,7 +35,7 @@ const store = createStore({
   state() {
     return {
       cartCount: 0,
-      food: [],
+      menu: [],
       category: []
     }
   },
@@ -45,32 +45,24 @@ const store = createStore({
       state.cartCount = payload;
     },
     SET_MENU(state, payload) {
-      state.food = payload
+      state.menu = payload
     }
   },
   // Methods that can contain async. code
   // Can not directly alter the state - has to change state
   // by committing mutations
   actions: {
-    async fetchFood({ commit }) {
-      /*fetch("http://localhost:3000/Menu")
+    getMenu({ commit }) {
+      fetch("http://localhost:3000/Menu")
         .then((res) => res.json())
         .then((data) => (commit("SET_MENU", data)))
-        .catch((err) => console.log(err.message));*/
-      try {
-        const response = await this.$http.get("http://localhost:3000/Menu");
-        // JSON responses are automatically parsed.
-        commit("SET_MENU", response.data)
-      }
-      catch (error) {
-        console.log(error);
-      }
+        .catch((err) => console.log(err.message));
     },
   },
   getters: {
     getFoodById(state) {
       return function (id) {
-        return state.food.filter((food) => {
+        return state.menu.filter((food) => {
           return food.id == id;
         }, this.id)[0];
       }
