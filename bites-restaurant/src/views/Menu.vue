@@ -43,6 +43,7 @@
 </template>
 
 <script>
+//import store from "@/store/index";
 export default {
   name: "Menu",
   data() {
@@ -77,7 +78,6 @@ export default {
   },
 };
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 header {
