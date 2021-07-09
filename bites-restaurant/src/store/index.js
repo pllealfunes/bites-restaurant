@@ -60,13 +60,17 @@ const store = createStore({
     },
   },
   getters: {
+    /*getFoodById: (state) => (id) => {
+      return state.menu.filter(food => food.id.toString() === id)
+    },
+  }*/
     getFoodById(state) {
       return function (id) {
         return state.menu.filter((food) => {
           return food.id == id;
-        }, this.id)[0];
+        }, id)[0];
       }
-    },
+    }
   }
 })
 

@@ -28,36 +28,22 @@
 </template>
 
 <script>
-//import { cart } from "@/components/CartCount.vue";
 export default {
   name: "Menu",
   components: {
     //cart,
   },
   data() {
-    return {
-      food: null,
-      //cart: 0,
-    };
+    return {};
   },
   props: {
     id: {
       type: String,
     },
   },
-  mounted() {
-    fetch("http://localhost:3000/menu/" + this.id)
-      .then((res) => res.json())
-      .then((data) => (this.food = data))
-      .catch((err) => console.log(err.message));
-  },
   computed: {
-    imgSrc() {
-      try {
-        return require("../assets/images/" + this.food.img + ".jpg");
-      } catch (e) {
-        return require("../assets/images/thatbites.jpg");
-      }
+    food() {
+      return this.$store.getters.getFoodById(this.id);
     },
   },
   methods: {

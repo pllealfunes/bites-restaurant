@@ -58,7 +58,7 @@ export default {
       .then((res) => res.json())
       .then((data) => (this.foods = data))
       .catch((err) => console.log(err.message));*/
-    this.$store.dispatch("getMenu");
+    //this.$store.dispatch("getMenu");
   },
   computed: {
     menu() {

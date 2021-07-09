@@ -9,8 +9,16 @@ export default {
     return {};
   },
   computed: {
-    products() {
-      return this.$store.state.food;
+    menu() {
+      return this.$store.dispatch("getMenu");
+    },
+  },
+  mounted() {
+    this.loadMenu();
+  },
+  methods: {
+    loadMenu() {
+      this.$store.dispatch("getMenu");
     },
   },
 };
