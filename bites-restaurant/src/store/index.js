@@ -92,6 +92,13 @@ const store = createStore({
           quantity: cartItem.quantity
         }
       })
+    },
+    cartTotal(state, getters) {
+      let total = 0
+      getters.cartProducts.forEach(dish => {
+        total += dish.price * dish.quantity
+      })
+      return total
     }
   },
 })
