@@ -1,5 +1,6 @@
 
 import { createStore } from "vuex";
+//import createPersistedState from "vuex-persistedstate";
 
 /*export const store = createStore({
   state() { return { cartCount: 0, food: [] } },
@@ -34,15 +35,21 @@ import { createStore } from "vuex";
 const store = createStore({
   state() {
     return {
-      cartCount: 0,
+      cart: [],
       menu: [],
-      category: []
     }
   },
+  //plugins: [createPersistedState()],
   // Methods used to alter the state of our store
   mutations: {
-    setCartCount(state, payload) {
-      state.cartCount = payload;
+    PUSH_ITEM_TO_CART(state, payload) {
+      state.cart.push({
+        id: payload,
+        quantity: 1
+      });
+    },
+    INCREMENT_ITEM_QUANTITY(state, payload) {
+      payload.quantity++
     },
     SET_MENU(state, payload) {
       state.menu = payload
@@ -58,20 +65,35 @@ const store = createStore({
         .then((data) => (commit("SET_MENU", data)))
         .catch((err) => console.log(err.message));
     },
+    addToCart(context, food) {
+      const cartItem = context.state.cart.find(item => item.id === food.id)
+
+      if (!cartItem) {
+        context.commit('PUSH_ITEM_TO_CART', food.id)
+      } else {
+        context.commit('INCREMENT_ITEM_QUANTITY', cartItem)
+      }
+    }
   },
   getters: {
-    /*getFoodById: (state) => (id) => {
-      return state.menu.filter(food => food.id.toString() === id)
-    },
-  }*/
     getFoodById(state) {
       return function (id) {
         return state.menu.filter((food) => {
           return food.id == id;
         }, id)[0];
       }
+    },
+    cartProducts(state) {
+      return state.cart.map(cartItem => {
+        let dish = state.menu.find(food => food.id == cartItem.id)
+        return {
+          title: dish.title,
+          price: dish.price,
+          quantity: cartItem.quantity
+        }
+      })
     }
-  }
+  },
 })
 
 export default store

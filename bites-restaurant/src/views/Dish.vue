@@ -21,9 +21,9 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sunt
         quos eum neque quam officiis adipisci error quis magni ad.
       </p>
-      <div id="price">$3.99</div>
+      <div id="price">{{ food.price }}</div>
     </div>
-    <button id="addBtn">Add to Order</button>
+    <button id="addBtn" @click="addToCart(food)">Add to Order</button>
   </div>
 </template>
 
@@ -47,10 +47,10 @@ export default {
     },
   },
   methods: {
-    /*addCart() {
-      cart.add(this.food.id);
-      this.$store.commit("setCartCount", cart.count());
-    },*/
+    addToCart() {
+      this.$store.dispatch("addToCart", this.food);
+      //this.$store.commit("setCartCount", cart.count());
+    },
   },
 };
 </script>
