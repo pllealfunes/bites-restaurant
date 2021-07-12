@@ -6,7 +6,7 @@
         {{ food.title }} - {{ food.price }} - {{ food.quantity }}
       </li>
     </ul>
-    <div>Total: {{ cartTotal }}</div>
+    <div>Total: ${{ cartTotal }}</div>
   </div>
 </template>
 

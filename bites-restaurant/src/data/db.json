@@ -6,7 +6,7 @@
             "img": "bites-pancakes.jpg",
             "ingrediants": "Stuff",
             "category": "Breakfast",
-            "price": "$3.50"
+            "price": "3.50"
         },
         {
             "id": 2,
@@ -14,7 +14,7 @@
             "img": "bites-spinach-toast.jpg",
             "ingrediants": "Stuff",
             "category": "Breakfast",
-            "price": "$3"
+            "price": "3"
         },
         {
             "id": 3,
@@ -22,7 +22,7 @@
             "img": "bites-guac-toast.jpg",
             "ingrediants": "Stuff",
             "category": "Breakfast",
-            "price": "$3"
+            "price": "3"
         },
         {
             "id": 4,
@@ -30,7 +30,7 @@
             "img": "bites-salad.jpg",
             "ingrediants": "Stuff",
             "category": "Lunch",
-            "price": "$4.50"
+            "price": "4.50"
         },
         {
             "id": 5,
@@ -38,7 +38,7 @@
             "img": "bites-sandwich.jpg",
             "ingrediants": "Stuff",
             "category": "Lunch",
-            "price": "$5"
+            "price": "5"
         },
         {
             "id": 6,
@@ -46,7 +46,7 @@
             "img": "bites-soup.jpg",
             "ingrediants": "Stuff",
             "category": "Lunch",
-            "price": "$3"
+            "price": "3"
         },
         {
             "id": 7,
@@ -54,7 +54,7 @@
             "img": "bites-burger.jpg",
             "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
             "category": "Dinner",
-            "price": "$5"
+            "price": "5"
         },
         {
             "id": 8,
@@ -62,7 +62,7 @@
             "img": "bites-steak.jpg",
             "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
             "category": "Dinner",
-            "price": "$5.50"
+            "price": "5.50"
         },
         {
             "id": 9,
@@ -70,7 +70,7 @@
             "img": "bites-spaghetti.jpg",
             "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
             "category": "Dinner",
-            "price": "$9.50"
+            "price": "9.50"
         },
         {
             "id": 10,
@@ -78,7 +78,7 @@
             "img": "bites-cake.jpg",
             "ingrediants": "Stuff",
             "category": "Dessert",
-            "price": "$3.50"
+            "price": "3.50"
         },
         {
             "id": 11,
@@ -86,7 +86,7 @@
             "img": "bites-waffles-icecream.jpg",
             "ingrediants": "Stuff",
             "category": "Dessert",
-            "price": "$3.50"
+            "price": "3.50"
         },
         {
             "id": 12,
@@ -94,7 +94,7 @@
             "img": "bites-fruit-jello.jpg",
             "ingrediants": "Stuff",
             "category": "Dessert",
-            "price": "$2.25"
+            "price": "2.25"
         }
     ]
 }

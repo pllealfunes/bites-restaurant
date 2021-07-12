@@ -21,7 +21,7 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sunt
         quos eum neque quam officiis adipisci error quis magni ad.
       </p>
-      <div id="price">{{ food.price }}</div>
+      <div id="price">${{ food.price }}</div>
     </div>
     <button id="addBtn" @click="addToCart(food)">Add to Order</button>
   </div>
