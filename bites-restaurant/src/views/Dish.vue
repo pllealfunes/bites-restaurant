@@ -19,6 +19,9 @@
       </p>
       <div id="price">${{ food.price }}</div>
     </div>
+    <div id="confirmation-message" v-if="showConfirmationMessage">
+      Added to Cart
+    </div>
     <button id="addBtn" @click="addToCart(food)">Add to Order</button>
   </div>
 </template>
@@ -31,7 +34,9 @@ export default {
     cart,
   },
   data() {
-    return {};
+    return {
+      showConfirmationMessage: false,
+    };
   },
   props: {
     id: {
@@ -53,7 +58,8 @@ export default {
   methods: {
     addToCart() {
       this.$store.dispatch("addToCart", this.food);
-      //this.$store.commit("setCartCount", cart.count());
+      this.showConfirmationMessage = true;
+      setTimeout(() => (this.showConfirmationMessage = false), 2000);
     },
   },
 };
@@ -96,6 +102,14 @@ export default {
       font-size: 30px;
       margin-top: 50px;
     }
+  }
+
+  #confirmation-message {
+    background-color: green;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 15px;
+    color: #fff;
   }
 
   #addBtn {
