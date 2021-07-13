@@ -99,7 +99,14 @@ const store = createStore({
         total += dish.price * dish.quantity
       })
       return total
-    }
+    },
+    cartItemTotal(state, getters) {
+      let itemsTotal = 0;
+      getters.cartProducts.forEach(
+        (item) => (itemsTotal += item.quantity)
+      );
+      return itemsTotal;
+    },
   },
 })
 

@@ -2,9 +2,7 @@
   <div id="main">
     <header>
       <h1>Menu</h1>
-      <router-link v-bind:to="{ name: 'Checkout' }">
-        <button id="cart"><i d="cart" class="fas fa-shopping-cart"></i></button>
-      </router-link>
+      <cart></cart>
     </header>
     <div id="nav">
       <button
@@ -43,9 +41,12 @@
 </template>
 
 <script>
-//import store from "@/store/index";
+import cart from "@/components/CartCount.vue";
 export default {
   name: "Menu",
+  components: {
+    cart,
+  },
   data() {
     return {
       categories: ["All", "Breakfast", "Lunch", "Dinner", "Dessert"],

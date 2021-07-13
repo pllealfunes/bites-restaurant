@@ -2,11 +2,7 @@
   <div v-if="food" id="wrapper">
     <header>
       <h1>{{ food.title }}</h1>
-      <router-link v-bind:to="{ name: 'Checkout' }">
-        <button id="cart">
-          <i class="fas fa-shopping-cart"></i>
-        </button>
-      </router-link>
+      <cart></cart>
     </header>
     <div
       class="thumb"
@@ -28,10 +24,11 @@
 </template>
 
 <script>
+import cart from "@/components/CartCount.vue";
 export default {
   name: "Menu",
   components: {
-    //cart,
+    cart,
   },
   data() {
     return {};
@@ -45,6 +42,13 @@ export default {
     food() {
       return this.$store.getters.getFoodById(this.id);
     },
+    /*cartItemTotal() {
+      let itemsTotal = 0;
+      this.$store.getters.cartProducts.forEach(
+        (item) => (itemsTotal += item.quantity)
+      );
+      return itemsTotal;
+    },*/
   },
   methods: {
     addToCart() {
@@ -69,13 +73,6 @@ export default {
     flex-direction: row;
     h1 {
       font-size: 40px;
-    }
-    #cart {
-      border: none;
-      font-size: 25px;
-      background-color: #fff;
-      margin-left: 10px;
-      cursor: pointer;
     }
   }
   .thumb {

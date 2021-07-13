@@ -1,27 +1,26 @@
 <template>
-  <div class="wrapper">
-    <router-link id="list-count" v-bind:to="{ name: 'Checkout' }">
-      {{ cartCount }}</router-link
-    >
-  </div>
+  <router-link v-bind:to="{ name: 'Checkout' }">
+    <button id="cart">
+      <i class="fas fa-shopping-cart"
+        ><span>{{ cartItemTotal }}</span></i
+      >
+    </button>
+  </router-link>
 </template>
 
 <script>
-import { cart } from "@/common/Cart.js";
+//import { cart } from "@/common/Cart.js";
 export default {
   name: "Cart",
   data() {
     return {
-      cart: [],
+      //cart: [],
     };
   },
   props: {},
-  mounted() {
-    this.$store.commit("cartCount", cart.count());
-  },
   computed: {
-    cartCount() {
-      return this.$store.state.cartCount;
+    cartItemTotal() {
+      return this.$store.getters.cartItemTotal;
     },
   },
 };
@@ -29,4 +28,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+#cart {
+  border: none;
+  font-size: 25px;
+  background-color: #fff;
+  margin-left: 10px;
+  cursor: pointer;
+  span {
+    margin-left: 5px;
+  }
+}
 </style>
