@@ -51,6 +51,9 @@ const store = createStore({
     INCREMENT_ITEM_QUANTITY(state, payload) {
       payload.quantity++
     },
+    DECREMENT_ITEM_QUANTITY(state, payload) {
+      payload.quantity--
+    },
     SET_MENU(state, payload) {
       state.menu = payload
     }
@@ -67,12 +70,24 @@ const store = createStore({
     },
     addToCart(context, food) {
       const cartItem = context.state.cart.find(item => item.id === food.id)
-
+      console.log(context.state.cart)
       if (!cartItem) {
         context.commit('PUSH_ITEM_TO_CART', food.id)
       } else {
         context.commit('INCREMENT_ITEM_QUANTITY', cartItem)
       }
+    },
+    deleteFromCart(context, food) {
+      const cartItem = context.state.cart.find(item => item.id === food.id)
+      if (cartItem.quantity > 1) context.commit('DECREMENT_ITEM_QUANTITY', cartItem);
+      else
+        context.state.cart = context.state.cart.filter(
+          (item) => item.id !== food.id
+        );
+    },
+    addFromCart(context, food) {
+      const cartItem = context.state.cart.find(item => item.id === food.id)
+      if (cartItem.quantity >= 1) context.commit('INCREMENT_ITEM_QUANTITY', cartItem);
     }
   },
   getters: {
@@ -87,6 +102,7 @@ const store = createStore({
       return state.cart.map(cartItem => {
         let dish = state.menu.find(food => food.id == cartItem.id)
         return {
+          id: dish.id,
           title: dish.title,
           price: dish.price,
           quantity: cartItem.quantity

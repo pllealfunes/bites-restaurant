@@ -12,6 +12,9 @@ export default {
     menu() {
       return this.$store.dispatch("getMenu");
     },
+    cart() {
+      return this.$store.state.cart;
+    },
   },
   mounted() {
     this.loadMenu();
