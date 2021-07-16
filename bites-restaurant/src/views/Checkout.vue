@@ -12,11 +12,11 @@
     <div id="checkout">
       <form id="checkoutForm">
         <label>First Name</label>
-        <input type="text" required v-model="fname" />
+        <input type="text" v-model="fname" />
         <label>Last Name</label>
-        <input type="text" required v-model="lname" />
+        <input type="text" v-model="lname" />
         <label>Email:</label>
-        <input type="email" required v-model="email" />
+        <input type="email" v-model="email" />
         <label for="orderType">Order Type</label>
         <select name="orderType" v-model="orderType" @change="showAddressInput">
           <option value="onlineOrder">Online Order</option>
@@ -41,7 +41,13 @@
           <label>Security Code</label>
           <input type="text" required v-model="secCode" />
         </div>
-        <button @click="checkout">Checkout</button>
+        <button
+          @click="checkout"
+          :disabled="disableButton"
+          :class="{ disabled: disableButton }"
+        >
+          Checkout
+        </button>
       </form>
       <ul id="cart">
         <li v-for="food in list" :key="food.id">
@@ -56,12 +62,13 @@
 </template>
 
 <script>
+//import Validator from "validatorjs";
 export default {
   data() {
     return {
       fname: "",
       lname: "",
-      email: null,
+      email: "",
       payment: "",
       cardOption: false,
       cardNumber: "",
@@ -74,6 +81,7 @@ export default {
       showConfirmationMessage: false,
       instoreMessage: false,
       deliveryMessage: false,
+      preventForm: false,
     };
   },
   computed: {
@@ -82,6 +90,19 @@ export default {
     },
     cartTotal() {
       return this.$store.getters.cartTotal;
+    },
+    disableButton() {
+      if (
+        this.fname.length > 1 &&
+        this.lname.length > 1 &&
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          this.email
+        )
+      ) {
+        return false;
+      } else {
+        return true;
+      }
     },
   },
   methods: {
@@ -144,5 +165,9 @@ export default {
 #checkoutForm,
 #cart {
   margin: 2rem;
+}
+
+.disabledButton {
+  cursor: not-allowed;
 }
 </style>
