@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div id="wrapper">
     <h1>Checkout</h1>
     <div v-if="showConfirmationMessage">
       <h3>Thank You {{ fname }} {{ lname }}!</h3>
@@ -22,7 +22,7 @@
           <option value="onlineOrder">Online Order</option>
           <option value="pickup">Pickup</option>
         </select>
-        <div v-if="onlineOrderSelect">
+        <div v-if="onlineOrderSelect" id="onlineOrderSelect">
           <label>Address</label>
           <input type="text" required v-model="address" />
           <label>Town</label>
@@ -35,17 +35,13 @@
           <option value="card">Card</option>
           <option value="instore">In store</option>
         </select>
-        <div v-if="cardOption">
+        <div v-if="cardOption" id="cardOption">
           <label>Card</label>
           <input type="text" required v-model="cardNumber" />
           <label>Security Code</label>
           <input type="text" required v-model="secCode" />
         </div>
-        <button
-          @click="checkout"
-          :disabled="disableButton"
-          :class="{ disabled: disableButton }"
-        >
+        <button :disabled="formFilled" :class="{ disabledButton: formFilled }">
           Checkout
         </button>
       </form>
@@ -55,9 +51,14 @@
           <button @click="incrementDish(food.id)">Add</button>
           <button @click="decrementDish(food)">Delete</button>
         </li>
+        <div>Total: ${{ cartTotal }}</div>
       </ul>
-      <div>Total: ${{ cartTotal }}</div>
     </div>
+    <ul id="account-errors" v-if="errors">
+      <li v-for="(error, index) in errors" :key="index">
+        {{ error.toString() }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -81,7 +82,8 @@ export default {
       showConfirmationMessage: false,
       instoreMessage: false,
       deliveryMessage: false,
-      preventForm: false,
+      errors: null,
+      //formFilled: false,
     };
   },
   computed: {
@@ -91,7 +93,7 @@ export default {
     cartTotal() {
       return this.$store.getters.cartTotal;
     },
-    disableButton() {
+    formFilled() {
       if (
         this.fname.length > 1 &&
         this.lname.length > 1 &&
@@ -128,7 +130,7 @@ export default {
         this.deliveryMessage = true;
       }
     },
-    checkout() {
+    /*checkout() {
       this.fname = "";
       this.lname = "";
       this.email = null;
@@ -139,35 +141,73 @@ export default {
       this.cardOption = false;
       this.onlineOrderSelect = false;
       this.showConfirmationMessage = true;
-    },
+    },*/
   },
 };
 </script>
 
 <style>
+#wrapper {
+  background-color: whitesmoke;
+  min-height: 100vh;
+}
 #checkout {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 2rem;
+  background-color: #fff;
+  width: 30rem;
 }
 
-#checkoutForm {
+#checkoutForm,
+#cardOption,
+#onlineOrderSelect {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   flex-wrap: wrap;
+  padding: 2rem;
 }
 
 #checkoutForm,
 #cart {
   margin: 2rem;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #343a40;
+  font-size: 17px;
+  height: 40px;
+  margin-bottom: 45px;
+  width: 400px;
+}
+
+select {
+  margin: 10px;
+  font-size: 20px;
+}
+
+button {
+  background-color: tomato;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px;
+  border: none;
+  margin-top: 2rem;
 }
 
 .disabledButton {
   cursor: not-allowed;
+  background-color: #c8c8c8;
 }
 </style>
