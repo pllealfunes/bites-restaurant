@@ -41,18 +41,28 @@
           <label>Security Code</label>
           <input type="text" required v-model="secCode" />
         </div>
-        <button :disabled="formFilled" :class="{ disabledButton: formFilled }">
+        <button
+          id="cartButton"
+          :disabled="formFilled"
+          :class="{ disabledButton: formFilled }"
+        >
           Checkout
         </button>
       </form>
-      <ul id="cart">
-        <li v-for="food in list" :key="food.id">
-          {{ food.title }} - {{ food.price }} - {{ food.quantity }}
-          <button @click="incrementDish(food.id)">Add</button>
-          <button @click="decrementDish(food)">Delete</button>
-        </li>
+      <div id="orderContainer">
+        <ul id="cart">
+          <li v-for="food in list" :key="food.id">
+            {{ food.quantity }} - {{ food.title }} - ${{ food.price }}
+            <button @click="incrementDish(food.id)" id="incrementBtn">
+              <i class="fas fa-plus-square"></i>
+            </button>
+            <button @click="decrementDish(food)" id="decrementBtn">
+              <i class="fas fa-minus-square"></i>
+            </button>
+          </li>
+        </ul>
         <div>Total: ${{ cartTotal }}</div>
-      </ul>
+      </div>
     </div>
     <ul id="account-errors" v-if="errors">
       <li v-for="(error, index) in errors" :key="index">
@@ -146,7 +156,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 #wrapper {
   background-color: whitesmoke;
   min-height: 100vh;
@@ -154,12 +164,9 @@ export default {
 #checkout {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin: 0 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: #fff;
-  width: 30rem;
 }
 
 #checkoutForm,
@@ -174,10 +181,24 @@ export default {
 }
 
 #checkoutForm,
-#cart {
+#orderContainer {
   margin: 2rem;
   font-size: 25px;
   font-weight: bold;
+  background-color: #fff;
+  min-width: 30rem;
+}
+
+#cart {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2rem;
+}
+li {
+  margin: 0.5rem;
 }
 
 input[type="text"],
@@ -196,7 +217,7 @@ select {
   font-size: 20px;
 }
 
-button {
+#cartButton {
   background-color: tomato;
   color: #fff;
   font-weight: bold;
@@ -209,5 +230,16 @@ button {
 .disabledButton {
   cursor: not-allowed;
   background-color: #c8c8c8;
+}
+
+#incrementBtn,
+#decrementBtn {
+  background-color: tomato;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 2px 4px;
+  margin: 3px;
+  border: none;
 }
 </style>
