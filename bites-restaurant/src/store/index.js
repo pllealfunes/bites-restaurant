@@ -114,7 +114,7 @@ const store = createStore({
       getters.cartProducts.forEach(dish => {
         total += dish.price * dish.quantity
       })
-      return total
+      return total.toFixed(2)
     },
     cartItemTotal(state, getters) {
       let itemsTotal = 0;

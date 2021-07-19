@@ -64,11 +64,6 @@
         <div>Total: ${{ cartTotal }}</div>
       </div>
     </div>
-    <ul id="account-errors" v-if="errors">
-      <li v-for="(error, index) in errors" :key="index">
-        {{ error.toString() }}
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -92,8 +87,6 @@ export default {
       showConfirmationMessage: false,
       instoreMessage: false,
       deliveryMessage: false,
-      errors: null,
-      //formFilled: false,
     };
   },
   computed: {
@@ -158,7 +151,6 @@ export default {
 
 <style scoped lang="scss">
 #wrapper {
-  background-color: whitesmoke;
   min-height: 100vh;
 }
 #checkout {
@@ -229,7 +221,6 @@ select {
 
 .disabledButton {
   cursor: not-allowed;
-  background-color: #c8c8c8;
 }
 
 #incrementBtn,

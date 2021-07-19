@@ -14,7 +14,7 @@
             "img": "bites-spinach-toast.jpg",
             "ingrediants": "Stuff",
             "category": "Breakfast",
-            "price": "3"
+            "price": "3.00"
         },
         {
             "id": 3,
@@ -22,7 +22,7 @@
             "img": "bites-guac-toast.jpg",
             "ingrediants": "Stuff",
             "category": "Breakfast",
-            "price": "3"
+            "price": "3.00"
         },
         {
             "id": 4,
@@ -38,7 +38,7 @@
             "img": "bites-sandwich.jpg",
             "ingrediants": "Stuff",
             "category": "Lunch",
-            "price": "5"
+            "price": "5.00"
         },
         {
             "id": 6,
@@ -46,7 +46,7 @@
             "img": "bites-soup.jpg",
             "ingrediants": "Stuff",
             "category": "Lunch",
-            "price": "3"
+            "price": "3.00"
         },
         {
             "id": 7,
@@ -54,7 +54,7 @@
             "img": "bites-burger.jpg",
             "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
             "category": "Dinner",
-            "price": "5"
+            "price": "5.00"
         },
         {
             "id": 8,
