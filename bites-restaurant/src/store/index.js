@@ -1,36 +1,5 @@
 
 import { createStore } from "vuex";
-//import createPersistedState from "vuex-persistedstate";
-
-/*export const store = createStore({
-  state() { return { cartCount: 0, food: [] } },
-  getters: {
-    getFoodById(state) {
-      return function (id) {
-        return state.food.filter((food) => {
-          return food.id == id;
-        }, this.id)[0];
-      }
-    }
-  },
-  mutations: {
-    setCartCount(state, payload) {
-      state.food = payload;
-    },
-    setMenu(state, payload) {
-      state.food = payload
-    }
-  },
-  actions: {
-    fetchFood(context) {
-      fetch("http://localhost:3000/menu")
-        .then((res) => res.json())
-        .then((data) => (context.commit('setMenu', data)))
-        .catch((err) => console.log(err.message));
-    }
-  },
-  modules: {},
-});*/
 
 const store = createStore({
   state() {
