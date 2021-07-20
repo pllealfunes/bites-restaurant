@@ -56,6 +56,9 @@ const store = createStore({
     },
     SET_MENU(state, payload) {
       state.menu = payload
+    },
+    emptyCart(state) {
+      state.cart = []
     }
   },
   // Methods that can contain async. code
@@ -70,7 +73,6 @@ const store = createStore({
     },
     addToCart(context, food) {
       const cartItem = context.state.cart.find(item => item.id === food.id)
-      console.log(context.state.cart)
       if (!cartItem) {
         context.commit('PUSH_ITEM_TO_CART', food.id)
       } else {
@@ -88,7 +90,11 @@ const store = createStore({
     addFromCart(context, food) {
       const cartItem = context.state.cart.find(item => item.id === food.id)
       if (cartItem.quantity >= 1) context.commit('INCREMENT_ITEM_QUANTITY', cartItem);
-    }
+    },
+    checkout(context) {
+      context.state.cart
+      context.commit('emptyCart')
+    },
   },
   getters: {
     getFoodById(state) {

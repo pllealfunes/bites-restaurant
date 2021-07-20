@@ -2,15 +2,11 @@
   <div id="wrapper">
     <h1>Checkout</h1>
     <div v-if="showConfirmationMessage">
-      <h3>Thank You {{ fname }} {{ lname }}!</h3>
-      <p>A confirmation email was sent to {{ email }}</p>
-      <p v-if="instoreMessage">
-        Your order will be ready for pickup in 30 minutes
-      </p>
-      <p v-if="deliveryMessage">Your order is on it's way!</p>
+      <h3>Thank You!</h3>
+      <p>A confirmation email was sent to the email provided</p>
     </div>
     <div id="checkout">
-      <form id="checkoutForm">
+      <div id="checkoutForm">
         <label>First Name</label>
         <input type="text" v-model="fname" />
         <label>Last Name</label>
@@ -18,11 +14,12 @@
         <label>Email:</label>
         <input type="email" v-model="email" />
         <label for="orderType">Order Type</label>
-        <select name="orderType" v-model="orderType" @change="showAddressInput">
-          <option value="onlineOrder">Online Order</option>
+        <select name="orderType" v-model="orderType" @change="showCardOption">
+          <option disabled value="">Please select one</option>
+          <option value="delivery">Delivery</option>
           <option value="pickup">Pickup</option>
         </select>
-        <div v-if="onlineOrderSelect" id="onlineOrderSelect">
+        <div v-if="deliverySelect" id="deliverySelect">
           <label>Address</label>
           <input type="text" required v-model="address" />
           <label>Town</label>
@@ -30,8 +27,14 @@
           <label>Zip Code</label>
           <input type="text" required v-model="zipCode" />
         </div>
-        <label for="payment">Payment Method</label>
-        <select name="payment" v-model="payment" @change="showCardOption">
+        <label v-if="paymentSelectTitle" for="payment">Payment Method</label>
+        <select
+          v-if="paymentSelect"
+          name="payment"
+          v-model="payment"
+          @change="showCardOption"
+        >
+          <option disabled value="">Please select one</option>
           <option value="card">Card</option>
           <option value="instore">In store</option>
         </select>
@@ -45,15 +48,16 @@
           id="cartButton"
           :disabled="formFilled"
           :class="{ disabledButton: formFilled }"
+          @click="checkout"
         >
           Checkout
         </button>
-      </form>
+      </div>
       <div id="orderContainer">
         <ul id="cart">
           <li v-for="food in list" :key="food.id">
             {{ food.quantity }} - {{ food.title }} - ${{ food.price }}
-            <button @click="incrementDish(food.id)" id="incrementBtn">
+            <button @click="incrementDish(food)" id="incrementBtn">
               <i class="fas fa-plus-square"></i>
             </button>
             <button @click="decrementDish(food)" id="decrementBtn">
@@ -68,7 +72,6 @@
 </template>
 
 <script>
-//import Validator from "validatorjs";
 export default {
   data() {
     return {
@@ -79,14 +82,14 @@ export default {
       cardOption: false,
       cardNumber: "",
       secCode: "",
-      onlineOrderSelect: false,
-      orderType: false,
+      deliverySelect: false,
+      paymentSelect: false,
+      paymentSelectTitle: false,
+      orderType: "",
       address: "",
       town: "",
       zipCode: "",
       showConfirmationMessage: false,
-      instoreMessage: false,
-      deliveryMessage: false,
     };
   },
   computed: {
@@ -97,54 +100,96 @@ export default {
       return this.$store.getters.cartTotal;
     },
     formFilled() {
-      if (
-        this.fname.length > 1 &&
-        this.lname.length > 1 &&
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-          this.email
-        )
-      ) {
-        return false;
-      } else {
-        return true;
+      switch (true) {
+        case this.fname.length > 1 &&
+          this.lname.length > 1 &&
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            this.email
+          ) &&
+          this.orderType == "pickup" &&
+          this.payment == "card" &&
+          this.address != "" &&
+          this.town != "" &&
+          this.zipCode != "" &&
+          this.cardNumber != "" &&
+          this.secCode != "" &&
+          this.list.length >= 1:
+        case (this.fname.length > 1 &&
+          this.lname.length > 1 &&
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            this.email
+          ) &&
+          this.orderType == "delivery" &&
+          this.payment == "card" &&
+          this.address != "" &&
+          this.town != "" &&
+          this.zipCode != "") ||
+          (this.cardNumber != "" &&
+            this.secCode != "" &&
+            this.list.length >= 1):
+        case this.fname.length > 1 &&
+          this.lname.length > 1 &&
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            this.email
+          ) &&
+          this.orderType == "pickup" &&
+          this.payment == "instore" &&
+          this.list.length >= 1:
+          return false;
+        default:
+          return true;
       }
     },
   },
   methods: {
     decrementDish(food) {
-      console.log(this.$store.dispatch("deleteFromCart", food));
+      this.$store.dispatch("deleteFromCart", food);
     },
     incrementDish(food) {
       this.$store.dispatch("addFromCart", food);
     },
     showCardOption() {
-      if (this.payment == "card") {
+      if (this.orderType == "delivery") {
         this.cardOption = true;
+        this.deliverySelect = true;
+        this.paymentSelect = false;
+        this.paymentSelectTitle = true;
+      } else if (this.orderType == "pickup") {
+        this.paymentSelect = true;
+        this.paymentSelectTitle = true;
+        if (this.payment == "card") {
+          this.cardOption = true;
+          this.deliverySelect = true;
+        } else {
+          this.cardOption = false;
+          this.deliverySelect = false;
+        }
       } else {
         this.cardOption = false;
+        this.deliverySelect = false;
+        this.paymentSelect = false;
+        this.paymentSelectTitle = false;
       }
     },
-    showAddressInput() {
-      if (this.orderType == "onlineOrder") {
-        this.onlineOrderSelect = true;
-        this.deliveryMessage = true;
-      } else {
-        this.onlineOrderSelect = false;
-        this.deliveryMessage = true;
-      }
-    },
-    /*checkout() {
+    checkout() {
+      this.showConfirmationMessage = true;
       this.fname = "";
       this.lname = "";
-      this.email = null;
+      this.email = "";
       this.payment = "";
       this.cardOption = false;
       this.cardNumber = "";
       this.secCode = "";
-      this.cardOption = false;
-      this.onlineOrderSelect = false;
-      this.showConfirmationMessage = true;
-    },*/
+      this.deliverySelect = false;
+      this.paymentSelect = false;
+      this.paymentSelectTitle = false;
+      this.orderType = "";
+      this.address = "";
+      this.town = "";
+      this.zipCode = "";
+      this.$store.dispatch("checkout");
+      setTimeout(() => (this.showConfirmationMessage = false), 2000);
+    },
   },
 };
 </script>
@@ -163,7 +208,7 @@ export default {
 
 #checkoutForm,
 #cardOption,
-#onlineOrderSelect {
+#deliverySelect {
   display: flex;
   justify-content: center;
   align-items: flex-start;
