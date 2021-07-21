@@ -1,6 +1,11 @@
 <template>
   <div v-if="food" id="wrapper">
     <header>
+      <router-link v-bind:to="{ name: 'Menu' }">
+        <div id="goBackArrow">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+      </router-link>
       <h1>{{ food.title }}</h1>
       <cart></cart>
     </header>
@@ -72,6 +77,13 @@ export default {
     flex-direction: row;
     h1 {
       font-size: 40px;
+      margin: 10px;
+    }
+    #goBackArrow {
+      font-size: 25px;
+      margin-right: 5px;
+      cursor: pointer;
+      color: #2c3e50;
     }
   }
   .thumb {

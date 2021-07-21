@@ -132,7 +132,6 @@ header {
       opacity: 0.88;
       margin: 1rem;
       #header {
-        /*background: url("../assets/images/burger2.jpg") no-repeat center center;*/
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

@@ -1,6 +1,13 @@
 <template>
   <div id="wrapper">
-    <h1>Checkout</h1>
+    <header>
+      <router-link v-bind:to="{ name: 'Menu' }">
+        <div id="goBackArrow">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+      </router-link>
+      <h1>Checkout</h1>
+    </header>
     <div v-if="showConfirmationMessage">
       <h2>Thank You!</h2>
       <p>A confirmation email was sent to the email provided</p>
@@ -197,6 +204,23 @@ export default {
 <style scoped lang="scss">
 #wrapper {
   min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  h1 {
+    font-size: 40px;
+    margin: 10px;
+  }
+  #goBackArrow {
+    font-size: 25px;
+    margin-right: 5px;
+    cursor: pointer;
+    color: #2c3e50;
+  }
 }
 #checkout {
   display: flex;

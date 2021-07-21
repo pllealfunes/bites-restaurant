@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <header>
-      <h1>Bites</h1>
+      <h1>Bites Restaurant</h1>
     </header>
     <div id="welcomeBox">
       <div id="welcome">
@@ -28,50 +28,59 @@ header {
   background-color: black;
   color: $font-white;
   h1 {
-    font-size: 65px;
+    font-size: 55px;
     font-family: "Arvo", serif;
     text-align: center;
   }
 }
 
-#welcomeBox {
+#wrapper {
   opacity: 0.88;
   background: url("../assets/images/burger1.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
+  overflow: hidden;
 
-  div {
-    opacity: 0.88;
-    background-color: $background-grey;
-    color: $font-white;
-    width: 400px;
-    height: 300px;
-    padding: 1rem;
-    margin: 0 auto;
+  #welcomeBox {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    h2 {
-      font-size: 45px;
-    }
+    height: 90vh;
 
-    button {
-      padding: 10px;
-      border-radius: 25px;
-      border: none;
-      font-size: 25px;
-      background-color: red;
+    div {
+      opacity: 0.88;
+      background-color: $background-grey;
       color: $font-white;
-      font-weight: bold;
-      cursor: pointer;
+      max-width: 350px;
+      height: 300px;
+      width: 100%;
+      padding: 1rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      h2 {
+        font-size: 45px;
+      }
+
+      button {
+        padding: 10px;
+        border-radius: 25px;
+        border: none;
+        font-size: 30px;
+        background-color: red;
+        color: $font-white;
+        font-weight: bold;
+        cursor: pointer;
+      }
     }
   }
+}
+
+@media screen {
 }
 </style>
