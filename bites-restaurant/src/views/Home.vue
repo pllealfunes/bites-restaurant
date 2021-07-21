@@ -1,11 +1,13 @@
 <template>
-  <header>
-    <h1>Bites</h1>
-  </header>
-  <div id="welcomeBox">
-    <div>
-      <h2>Bite Sized Goodness</h2>
-      <router-link to="/menu"><button>Order</button></router-link>
+  <div id="wrapper">
+    <header>
+      <h1>Bites</h1>
+    </header>
+    <div id="welcomeBox">
+      <div id="welcome">
+        <h2>Bite Sized Goodness</h2>
+        <router-link to="/menu"><button>Order</button></router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -39,10 +41,10 @@ header {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 
   div {
     opacity: 0.88;

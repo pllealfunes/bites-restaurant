@@ -2,7 +2,7 @@
   <div id="wrapper">
     <h1>Checkout</h1>
     <div v-if="showConfirmationMessage">
-      <h3>Thank You!</h3>
+      <h2>Thank You!</h2>
       <p>A confirmation email was sent to the email provided</p>
     </div>
     <div id="checkout">

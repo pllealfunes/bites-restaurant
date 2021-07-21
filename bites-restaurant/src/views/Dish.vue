@@ -47,13 +47,6 @@ export default {
     food() {
       return this.$store.getters.getFoodById(this.id);
     },
-    /*cartItemTotal() {
-      let itemsTotal = 0;
-      this.$store.getters.cartProducts.forEach(
-        (item) => (itemsTotal += item.quantity)
-      );
-      return itemsTotal;
-    },*/
   },
   methods: {
     addToCart() {
