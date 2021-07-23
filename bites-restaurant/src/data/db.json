@@ -4,7 +4,7 @@
             "id": 1,
             "title": "Bites Pancakes",
             "img": "bites-pancakes.jpg",
-            "ingrediants": "Stuff",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Breakfast",
             "price": "3.50"
         },
@@ -12,7 +12,7 @@
             "id": 2,
             "title": "Bites Spinach Toast",
             "img": "bites-spinach-toast.jpg",
-            "ingrediants": "Stuff",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Breakfast",
             "price": "3.00"
         },
@@ -20,7 +20,7 @@
             "id": 3,
             "title": "Bites Guac Toast",
             "img": "bites-guac-toast.jpg",
-            "ingrediants": "Stuff",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Breakfast",
             "price": "3.00"
         },
@@ -28,7 +28,7 @@
             "id": 4,
             "title": "Bites Salad",
             "img": "bites-salad.jpg",
-            "ingrediants": "Stuff",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Lunch",
             "price": "4.50"
         },
@@ -36,7 +36,7 @@
             "id": 5,
             "title": "Bites Sandwich",
             "img": "bites-sandwich.jpg",
-            "ingrediants": "Stuff",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Lunch",
             "price": "5.00"
         },
@@ -44,7 +44,7 @@
             "id": 6,
             "title": "Bites Soup",
             "img": "bites-soup.jpg",
-            "ingrediants": "Stuff",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Lunch",
             "price": "3.00"
         },
@@ -52,7 +52,7 @@
             "id": 7,
             "title": "Bites Burger",
             "img": "bites-burger.jpg",
-            "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Dinner",
             "price": "5.00"
         },
@@ -60,7 +60,7 @@
             "id": 8,
             "title": "Bites Spaghetti",
             "img": "bites-steak.jpg",
-            "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Dinner",
             "price": "5.50"
         },
@@ -68,7 +68,7 @@
             "id": 9,
             "title": "Bites Steak",
             "img": "bites-spaghetti.jpg",
-            "ingrediants": "Lettuce, Tomatoe, Pickles, Onion, Mayo, Ketchup, Mustard, Cheese",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Dinner",
             "price": "9.50"
         },
@@ -76,7 +76,7 @@
             "id": 10,
             "title": "Bites Cake",
             "img": "bites-cake.jpg",
-            "ingrediants": "Stuff",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Dessert",
             "price": "3.50"
         },
@@ -84,7 +84,7 @@
             "id": 11,
             "title": "Bites Waffle Ice Cream",
             "img": "bites-waffles-icecream.jpg",
-            "ingrediants": "Stuff",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Dessert",
             "price": "3.50"
         },
@@ -92,7 +92,7 @@
             "id": 12,
             "title": "Bites Fruit Jello",
             "img": "bites-fruit-jello.jpg",
-            "ingrediants": "Stuff",
+            "ingrediants": "Ingrediant Ingrediant Ingrediant Ingrediant Ingrediant",
             "category": "Dessert",
             "price": "2.25"
         }

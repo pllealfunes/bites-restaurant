@@ -97,15 +97,25 @@ export default {
   }
 
   #descriptionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     #description {
       text-align: justify;
       width: 30rem;
-      margin-top: 5px;
-      font-size: 20px;
+      margin: 10px;
+      font-size: 25px;
     }
+
+    #ingrediants {
+      font-size: 20px;
+      margin: 20px;
+    }
+
     #price {
-      font-size: 30px;
-      margin-top: 50px;
+      font-size: 25px;
+      margin-top: 20px;
     }
   }
 
