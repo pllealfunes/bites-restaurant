@@ -8,7 +8,7 @@
       </router-link>
       <h1>Checkout</h1>
     </header>
-    <div v-if="showConfirmationMessage">
+    <div v-if="showConfirmationMessage" id="confirmation-message">
       <h2>Thank You!</h2>
       <p>A confirmation email was sent to the email provided</p>
     </div>
@@ -301,5 +301,13 @@ select {
   padding: 2px 4px;
   margin: 3px;
   border: none;
+}
+
+#confirmation-message {
+  background-color: green;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px 15px;
+  color: #fff;
 }
 </style>
