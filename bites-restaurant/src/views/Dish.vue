@@ -29,6 +29,17 @@
     </div>
     <button id="addBtn" @click="addToCart(food)">Add to Order</button>
   </div>
+  <div v-else>
+    <header>
+      <router-link v-bind:to="{ name: 'Menu' }">
+        <div id="goBackArrow">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+      </router-link>
+      <h1>Sorry for the issues. Go back to the previous page to try again.</h1>
+      <cart></cart>
+    </header>
+  </div>
 </template>
 
 <script>
