@@ -35,7 +35,7 @@ const store = createStore({
   // by committing mutations
   actions: {
     getMenu({ commit }) {
-      fetch("http://localhost:3000/Menu")
+      fetch("http://localhost:3000/menu")
         .then((res) => res.json())
         .then((data) => (commit("SET_MENU", data)))
         .catch((err) => console.log(err.message));
