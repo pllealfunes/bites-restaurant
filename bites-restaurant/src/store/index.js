@@ -38,7 +38,6 @@ const store = createStore({
       fetch("https://bites-restaurant.herokuapp.com/menu", {
         method: 'GET',
         mode: 'cors',
-        headers: { 'Content-Type': 'text' }
       })
         .then((res) => res.json())
         .then((data) => (commit("SET_MENU", data)))
