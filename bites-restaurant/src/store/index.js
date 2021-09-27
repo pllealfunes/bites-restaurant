@@ -39,8 +39,7 @@ const store = createStore({
         method: 'GET',
         mode: 'cors',
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Content-Type': 'application/json'
         }
       })
         .then((res) => res.json())
