@@ -8,6 +8,6 @@ const serveStatic = require('serve-static')
 server.use(serveStatic(__dirname + "/dist"))
 server.use(middlewares)
 server.use(router)
-server.listen(process.env.PORT || 4000, () => {
+server.listen(process.env.PORT || 3000, () => {
     console.log('JSON Server is running')
 })
