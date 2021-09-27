@@ -31,7 +31,7 @@ export default {
 #cart {
   border: none;
   font-size: 25px;
-  background-color: #fff;
+  background-color: whitesmoke;
   margin-left: 5px;
   cursor: pointer;
   span {
