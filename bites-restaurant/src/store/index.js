@@ -40,7 +40,7 @@ const store = createStore({
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://bites-restaurant.herokuapp.com/menu'
+          //'Access-Control-Allow-Origin': 'https://bites-restaurant.herokuapp.com/menu'
         }
       })
         .then((res) => res.json())
