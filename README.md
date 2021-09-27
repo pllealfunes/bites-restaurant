@@ -1,6 +1,7 @@
 # Bites Restaurant 🍽
 
-A restaurant site made using Vue 3, Vue Router, Vuex, and JSON-Server.
+A restaurant site made using Vue 3, Vue Router, Vuex, and JSON-Server hosted on Heroku.
+Hosted on Netlify: https://bites-restaurant-plf.netlify.app/
 
 ## Specifics 📌
 * Pages
