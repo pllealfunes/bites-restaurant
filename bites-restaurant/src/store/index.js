@@ -37,7 +37,7 @@ const store = createStore({
     getMenu({ commit }) {
       fetch("https://bites-restaurant.herokuapp.com/menu", {
         method: 'GET',
-        mode: 'no-cors',
+        mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*'
