@@ -54,13 +54,6 @@ export default {
       category: [],
     };
   },
-  mounted() {
-    /*fetch("http://localhost:3000/menu")
-      .then((res) => res.json())
-      .then((data) => (this.foods = data))
-      .catch((err) => console.log(err.message));*/
-    //this.$store.dispatch("getMenu");
-  },
   computed: {
     menu() {
       return this.$store.state.menu;
