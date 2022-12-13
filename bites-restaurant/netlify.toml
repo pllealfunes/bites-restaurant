@@ -1,7 +1,5 @@
 # example netlify.toml
 [build]
-  command = "vite build"
-  functions = "netlify/functions"
   publish = "dist"
 
 ## Uncomment to use this redirect for Single Page Applications
@@ -11,7 +9,9 @@
   to = "/index.html"
   status = 200
 
-https://bites-restaurant.herokuapp.com/menu            https://bites-restaurant-plf.netlify.app
+from = "https://bites-restaurant.herokuapp.com/menu     "
+  to = "https://bites-restaurant-plf.netlify.app"
+  status = 200
 
 
   [functions]
