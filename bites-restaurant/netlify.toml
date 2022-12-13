@@ -9,10 +9,6 @@
   to = "/index.html"
   status = 200
 
-from = "https://bites-restaurant.herokuapp.com/menu     "
+from = "https://bites-restaurant.herokuapp.com/menu"
   to = "https://bites-restaurant-plf.netlify.app"
   status = 200
-
-
-  [functions]
-    node_bundler = "esbuild"
