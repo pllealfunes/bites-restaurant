@@ -7,7 +7,7 @@ const middlewares = jsonServer.defaults()
 server.use(middlewares)
 server.use(router)
 server.use((req, res, next) => {
-    res.header('ACCESS-CONTROL-ALLOW-ORIGIN', 'https://bites-restaurant-api.onrender.com'),
+    res.header('ACCESS-CONTROL-ALLOW-ORIGIN', 'https://bites-restaurant-api.onrender.com/menu'),
         res.header('ACCESS-CONTROL-ALLOW-Headers', '*')
 })
 server.listen(process.env.PORT || 4000, () => {
