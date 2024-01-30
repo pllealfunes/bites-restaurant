@@ -9,6 +9,6 @@
   to = "/index.html"
   status = 200
 
-  from = "https://bites-restaurant-plf.netlify.app/menu"
-  to = "https://bites-restaurant.herokuapp.com/menu"
+  from = "https://bites-restaurant-gc36.onrender.com/menu"
+  to = "https://bites-restaurant.onrender.com/menu"
   status = 200
