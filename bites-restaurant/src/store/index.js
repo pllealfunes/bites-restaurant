@@ -35,7 +35,7 @@ const store = createStore({
   // by committing mutations
   actions: {
     getMenu({ commit }) {
-      fetch("https://bites-restaurant.herokuapp.com/menu", {
+      fetch("https://bites-restaurant.onrender.com/menu", {
         method: 'GET',
         mode: 'cors',
         headers: {
