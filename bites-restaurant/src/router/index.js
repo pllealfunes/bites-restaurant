@@ -39,7 +39,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("https://bites-restaurant.onrender.com"),
+  history: createWebHistory(process.env.BASE_URL),
   routes,
 });
 
